@@ -25,7 +25,10 @@
 
 #include <chrono>
 #include <random>
+#include <thread>
 #include "flow/actorcompiler.h" // has to be last include
+
+#define _GLIBCXX_USE_NANOSLEEP 1
 
 #ifdef ENABLE_SAMPLING
 template <class T, class IndexType, IndexType CAPACITY>
