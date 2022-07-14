@@ -82,7 +82,7 @@ endif()
 # Java Bindings
 ################################################################################
 
-option(BUILD_JAVA_BINDING "build java binding" ON)
+option(BUILD_JAVA_BINDING "build java binding" OFF)
 if(BUILD_JAVA_BINDING AND NOT WITH_C_BINDING)
   message(WARNING "Java binding depends on C binding, but C binding is not enabled")
 endif()
@@ -101,6 +101,7 @@ else()
     set(WITH_JAVA_BINDING OFF)
   endif()
 endif()
+set(WITH_JAVA_BINDING OFF)
 
 ################################################################################
 # Pip
@@ -113,6 +114,7 @@ if (WITH_PYTHON AND Python3_Interpreter_FOUND AND BUILD_DOCUMENTATION)
 else()
   set(WITH_DOCUMENTATION OFF)
 endif()
+ set(WITH_DOCUMENTATION OFF)
 
 ################################################################################
 # GO
@@ -137,6 +139,7 @@ else()
     set(WITH_GO_BINDING OFF)
   endif()
 endif()
+set(WITH_GO_BINDING OFF)
 
 ################################################################################
 # Ruby
@@ -156,6 +159,7 @@ else()
     set(WITH_RUBY_BINDING ON)
   endif()
 endif()
+ set(WITH_RUBY_BINDING OFF)
 
 ################################################################################
 # RocksDB
@@ -171,6 +175,7 @@ if (SSD_ROCKSDB_EXPERIMENTAL AND GCC)
 else()
   set(WITH_ROCKSDB_EXPERIMENTAL OFF)
 endif()
+set(WITH_ROCKSDB_EXPERIMENTAL OFF)
 
 ################################################################################
 # TOML11
@@ -209,7 +214,7 @@ elseif(NOT APPLE AND NOT USE_SANITIZER AND CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "
   # revert to libcoro for x86 linux while we investigate a performance regression
   set(DEFAULT_COROUTINE_IMPL libcoro)
 endif()
-
+set(DEFAULT_COROUTINE_IMPL boost)
 set(COROUTINE_IMPL ${DEFAULT_COROUTINE_IMPL} CACHE STRING "Which coroutine implementation to use. Options are boost and libcoro")
 
 ################################################################################

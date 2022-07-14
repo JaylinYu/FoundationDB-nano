@@ -52,6 +52,13 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 ################################################################################
+# Cross compile
+################################################################################
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I/usr/local/include -L/usr/local/lib -I/usr/lib-aarch64")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/local/include -I/usr/lib-aarch64 -march=armv8-a+crc+simd")
+
+
+################################################################################
 # Packages used for bindings
 ################################################################################
 
@@ -185,7 +192,7 @@ endif()
 add_subdirectory(fdbbackup)
 add_subdirectory(contrib)
 add_subdirectory(tests)
-add_subdirectory(flowbench EXCLUDE_FROM_ALL)
+#add_subdirectory(flowbench EXCLUDE_FROM_ALL)
 if(WITH_PYTHON AND WITH_C_BINDING)
   add_subdirectory(bindings)
 endif()

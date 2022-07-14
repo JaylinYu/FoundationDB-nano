@@ -15,7 +15,8 @@ ExternalProject_add(Jemalloc_project
   "${JEMALLOC_DIR}/lib/libjemalloc.a"
   "${JEMALLOC_DIR}/lib/libjemalloc_pic.a"
   PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/cmake/jemalloc.patch
-  CONFIGURE_COMMAND ./configure --prefix=${JEMALLOC_DIR} --enable-static --disable-cxx --enable-prof
+  CONFIGURE_COMMAND ./configure CC=aarch64-linux-gnu-gcc-12 CXX=aarch64-linux-gnu-g++-12 --prefix=${JEMALLOC_DIR} --enable-static --disable-cxx --enable-prof --host=aarch64-linux-gnu --with-arch=aarch64 --with-CPU=arm
+  #CC=aarch64-linux-gnu-gcc-12 CXX=aarch64-linux-gnu-g++-12
   BUILD_IN_SOURCE ON
   BUILD_COMMAND make
   INSTALL_DIR "${JEMALLOC_DIR}"
