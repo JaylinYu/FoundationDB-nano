@@ -54,8 +54,8 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 ################################################################################
 # Cross compile
 ################################################################################
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I/usr/local/include -L/usr/local/lib -I/usr/lib-aarch64")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/local/include -I/usr/lib-aarch64 -march=armv8-a+crc+simd")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I/usr/local/include -L/usr/local/lib -I/usr/lib-aarch64 -I/usr/lib-aarch64/openssl-aarch64")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/local/include -I/usr/lib-aarch64 -I/usr/lib-aarch64/openssl-aarch64 -march=armv8-a+crc+simd")
 
 
 ################################################################################
